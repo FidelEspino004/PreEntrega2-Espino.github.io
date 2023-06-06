@@ -1,0 +1,251 @@
+
+ * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+   font-family: 'Oswald', sans-serif;
+	background-color: yellow;
+   color: black;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.caja {
+   width: 100%;
+   height: 100vh;
+   margin: 0px auto;
+   display: grid;
+   grid-template-columns: minmax(80px, 80px) auto;
+   grid-template-rows: 60px auto;
+   grid-template-areas: "header header"
+                        "menu contenido";
+   transition: all 0 ease;
+}
+
+.caja.active {
+   grid-template-columns: minmax(250px, 18%) auto;
+}
+
+/* ---- ---- ---- HEADER ---- ---- ---- */
+.header {
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   grid-area: header;
+   background-color: yellow;
+   padding: 0px 20px;
+   display: grid;
+   grid-template-columns: auto 1fr auto;
+   align-items: center;
+   justify-content: space-between;
+   grid-gap: 20px;
+   grid-template-areas: "logo busqueda iconos";
+}
+
+.header .caja-logo {
+   grid-area: logo;
+   display: flex;
+   align-items: center;
+}
+
+.header .caja-logo .boton-menu {
+   border: none;
+   padding: 10px;
+   background: none;
+   cursor: pointer;
+   font-size: 18px;
+   border-radius: 100px;
+   width: 50px;
+   height: 50px;
+   margin-right: 20px;
+}
+
+.header .caja-logo .logo .fa-solid .fa-clapperboard {
+   background-color: white;
+   padding: 7px 20px;
+   border-radius: 4px;
+   font-size: 8px;
+   color: black;
+   position: relative; 
+   top: -4px;
+   margin-right: 4px;
+}
+
+.header .caja-logo .logo {
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 20px;
+      position: relative;
+      top: 2px;
+   }
+
+.header .barra-busqueda button {
+   height: 35px;
+   border: 1px solid white;
+   border-left: none;
+   color: black;
+   background-color: white;
+   padding: 0 25px;
+   cursor: pointer;
+}
+
+.header .barra-busqueda {
+   grid-area: busqueda;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.barra-busqueda input {
+   min-width: 60%;
+   padding: 0 15px;
+   height: 35px;
+   line-height: 35px;
+   border: 1px solid white;
+   font-size: 16px;
+
+}
+
+.header .botones-header {
+   grid-area: iconos;
+   display: flex;
+   align-items: center;
+}
+.header .botones-header button {
+   background: none;
+   border: none;
+   width: 40px;
+   height: 40px;
+   font-size: 18px;
+   padding: 7px 12px;
+   border-radius: 100px;
+   color: black;
+   margin-right: 20px;
+   cursor:pointer ;
+}
+
+.header .botones-header .avatar {
+   width: 30px;
+   height: 30px;
+   display: inline-block;
+}
+
+.header .botones-header .avatar img {
+   vertical-align: top;
+   width: 100%;
+   border-radius: 100px;
+}
+
+ /*-----------------------MENU LATERAL----------------------*/
+
+.menuLat {
+   grid-area: menu;
+   background-color: black;
+   color: white;
+   overflow: hidden;
+}
+
+.menuLat a {
+   display: block;
+   padding: 30px 30px;
+   color: white;
+   min-width: 800px;
+}
+
+.menuLat a:hover {
+   background:rgb(76, 75, 75);
+}
+
+.menuLat a.active {
+   background:rgb(76, 75, 75);
+   font-weight: bold;
+}
+
+.menuLat .fa-solid {
+   margin-right: 32px;
+   width: 20px;
+   text-align: center;
+}
+
+.menuLat a.active .fa-solid {
+   color: rgb(76, 75, 75);
+}
+
+.menuLat hr {
+   margin: 100px 0; 
+   border: none;
+}
+/*-----------------------MAIN----------------------*/
+.main {
+   grid-area: contenido;
+   background-color: white;
+   padding: 40px;
+
+}
+
+.main.titulo {
+   margin-bottom: 20px;
+}
+
+.main .grid-videos {
+   display: grid;
+   grid-gap: 40px 20px;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+.main .grid-videos .video {
+   width: 100%;
+   display: block;
+}
+
+.main .grid-videos .video img {
+   width: 100%;
+}
+
+/*-----------------------MEDIAQUERIES----------------------*/
+@media screen and (max-width: 1200px) {
+   .main .grid-videos{
+      grid-template-columns: repeat(2, fr);
+   }
+
+   .header .caja-logo .logo span {
+      display: none;
+   }
+   .header .barra-busqueda input {
+      min-width: 70%;
+   }
+}
+
+@media screen and (max-width: 992px) {
+   .main .grid-videos {
+      grid-template-columns: repeat(1, fr);
+}
+}
+
+@media screen and (max-width: 768px) {
+   .caja {
+      grid-template-rows: auto;
+}
+   .header{
+      padding: 20px;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      grid-template-areas: "logo iconos"
+                           "busqueda busqueda";
+
+   }
+   .header .caja-logo .logo span {
+      display: inline;
+   }
+   .header .barra-busqueda input {
+      min-width: auto;
+      width: 100%;
+   }
+}
